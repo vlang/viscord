@@ -5,6 +5,7 @@ import json
 //    Hey, fyi, a lot of this has to be    //
 //     commented out to compile due to     //
 //     optionals being limited to 400b     //
+//     this will be fixed in the future    //
 // ======================================= //
 //    In the future i plan to move all     //
 //     of these structs into their own     //
