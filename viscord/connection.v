@@ -66,6 +66,10 @@ pub fn (d mut Connection) subscribe(name string, handler eventbus.EventHandlerFn
 	d.events.subscriber.subscribe(name, handler)
 }
 
+pub fn (d mut Connection) subscribe_method(name string, handler eventbus.EventHandlerFn, receiver voidptr) {
+	d.events.subscriber.subscribe_method(name, handler, receiver)
+}
+
 fn on_open(d mut Connection, ws websocket.Client, _ voidptr) {
 	println('websocket opened.')
 }
@@ -113,7 +117,7 @@ fn on_hello(d mut Connection, ws websocket.Client, packet &DiscordPacket) {
 		guild_subscriptions: true
 	}
 	encoded := identify_packet.encode()
-	println(encoded)
+	//println(encoded)
 	d.ws.write(encoded.str, encoded.len, .text_frame)
 	
 }
@@ -122,7 +126,6 @@ fn on_ready(d mut Connection, ws websocket.Client, packet &DiscordPacket) {
 	ready_packet := decode_ready_packet(packet.d) or { return }
 	d.session_id = ready_packet.session_id
 }
-
 
 fn on_close(d mut Connection, ws websocket.Client, _ voidptr) {
 	println('websocket closed.')

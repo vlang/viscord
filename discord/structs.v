@@ -1,5 +1,4 @@
 module discord
-import json
 
 // ======================================= //
 //    Hey, fyi, a lot of this has to be    //
@@ -19,30 +18,36 @@ pub enum ActivityTypes {
 	custom
 }
 pub struct ActivityTimestamps {
+pub:
 	start	int
 	end		int
 }
 pub struct ActivityEmoji {
+pub:
 	name		string
 	id			string
 	animated 	bool
 }
 pub struct ActivityParty {
+pub:
 	id		string
 	size	[]int
 }
 pub struct ActivityAssets {
+pub:
 	large_image	string
 	large_text	string
 	small_image	string
 	small_text	string
 }
 pub struct ActivitySecrets {
+pub:
 	join		string
 	spectate	string
 	match_str	string [json:"match"]
 }
 pub struct Activity {
+pub:
 	name			string
 	typ				ActivityTypes [json:"type"]
 	url				string
@@ -59,6 +64,7 @@ pub struct Activity {
 }
 
 pub struct Status {
+pub:
 	since	int
 	game	Activity
 	status	string
@@ -66,6 +72,7 @@ pub struct Status {
 }
 
 pub struct User {
+pub:
 	id				string
 	username		string
 	discriminator	string
@@ -79,11 +86,10 @@ pub struct User {
 	flags			int = 0
 	premium_type	int = 0
 	public_flags	int = 0
-	member			GuildMember
 }
 
 pub struct GuildMember {
-//	user			User
+pub:
 	nick			string
 	roles			[]string
 	joined_at		string
@@ -93,6 +99,7 @@ pub struct GuildMember {
 }
 
 pub struct ChannelMention {
+pub:
 	id			string
 	guild_id	string
 	typ			int [json:"type"]
@@ -100,6 +107,7 @@ pub struct ChannelMention {
 }
 
 pub struct Attachment {
+pub:
 	id			string
 	filename	string
 	size		int
@@ -110,32 +118,38 @@ pub struct Attachment {
 }
 
 pub struct EmbedFooter {
+pub:
 	text			string
 	icon_url		string
 	proxy_icon_url	string
 }
 pub struct EmbedImage {
+pub:
 	url			string
 	proxy_url	string
 	height		int
 	width		int
 }
 pub struct EmbedProvider {
+pub:
 	name	string
 	url		string
 }
 pub struct EmbedAuthor {
+pub:
 	name			string
 	url				string
 	icon_url		string
 	proxy_icon_url	string
 }
 pub struct EmbedField {
+pub:
 	name	string
 	value	string
 	inline	bool
 }
 pub struct Embed {
+pub:
 	title		string
 	typ			string [json:"type"]
 	description	string
@@ -152,16 +166,18 @@ pub struct Embed {
 }
 
 pub struct Emoji {
+pub:
 	id				string
 	name			string
 	roles			[]string
-	user			User
+	//user			User
 	require_colons	bool
 	managed			bool
 	animated		bool
 	available		bool
 }
 pub struct Reaction {
+pub:
 	count	int
 	me		bool
 	emoji	Emoji
@@ -198,10 +214,12 @@ pub enum MessageActivityType {
 	join_request
 }
 pub struct MessageActivity {
+pub:
 	typ			MessageActivityType [json:"type"]
 	party_id	string
 }
 pub struct MessageApplication {
+pub:
 	id			string
 	cover_image	string
 	description	string
@@ -209,6 +227,7 @@ pub struct MessageApplication {
 	name		string
 }
 pub struct MessageReference {
+pub:
 	message_id	string
 	channel_id	string
 	guild_id	string
@@ -219,29 +238,30 @@ pub:
 	channel_id			string
 	guild_id			string
 	author				User
-	// member			GuildMember
+	member				GuildMember
 	content				string
 	timestamp			string
 	edited_timestamp	string	
 	tts					bool
 	mention_everyone	bool	
-	// mentions			[]User
-	// mention_roles	[]string
-	// mention_channels	[]ChannelMention
-	// attachments		[]Attachment
-	// embeds			[]Embed
-	// reactions		[]Reaction
+	mentions			[]User
+	//mention_roles		[]string
+	//mention_channels	[]ChannelMention
+	//attachments			[]Attachment
+	//embeds				[]Embed
+	//reactions			[]Reaction
 	nonce				string
 	pinned				bool
-	// webhook_id		string
+	webhook_id			string
 	typ					int [json:"type"]				
-	// activity			MessageActivity
-	// application		MessageApplication
-	// message_referenceMessageReference
-	// flags			MessageFlags
+	//activity			MessageActivity
+	//application			MessageApplication
+	//message_reference	MessageReference
+	flags				MessageFlags
 }
 
 pub struct UnavailableGuild {
+pub:
 	id			string
 	unavailable	bool
 }
